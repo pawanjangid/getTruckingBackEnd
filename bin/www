@@ -16,12 +16,6 @@ var fs = require('fs');
 var port = normalizePort(process.env.PORT || '9000');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
- // var privateKey  = fs.readFileSync(path.resolve("./cert/key.pem"), 'utf8');
- // var certificate = fs.readFileSync(path.resolve("./cert/cert.pem"), 'utf8');
-
 var server = http.createServer(app);
 
 /**

@@ -3,7 +3,7 @@ const pool = require("../config/database");
 module.exports = {
     create: (data, callBack) => {
         pool.query(
-            "insert into student(firstName, lastName, email, phone, password,time) values(?,?,?,?,?,?)",
+            "insert into users(firstName, lastName, email, phone, password,createdAt) values(?,?,?,?,?,?)",
             [
                 data.firstName,
                 data.lastName,
@@ -22,7 +22,7 @@ module.exports = {
     },
 
     userList: (callBack) => {
-        pool.query("SELECT * FROM student",[],
+        pool.query("SELECT * FROM users",[],
         (error,results,fields) => {
             if(error){
                 callBack(error);
@@ -33,7 +33,7 @@ module.exports = {
     },
     userById: (data,callBack) => {
         console.log(data)
-        pool.query("SELECT * FROM student where std_id = ?",[data.user_id],
+        pool.query("SELECT * FROM users where user_id = ?",[data.user_id],
             (error,results,fields)=>{
                 if(error){
                     callBack(error);
@@ -44,7 +44,7 @@ module.exports = {
     },
 
     updateUser : (data,callBack) => {
-        pool.query("UPDATE student SET firstName = ?, lastName=? WHERE std_id = ?", [data.firstName,data.lastName,data.user_id],
+        pool.query("UPDATE users SET firstName = ?, lastName=? WHERE user_id = ?", [data.firstName,data.lastName,data.user_id],
             (error,results,fields)=>{
                 if(error){
                     callBack(error);
@@ -55,7 +55,7 @@ module.exports = {
     },
 
     getUserByEmail: (data,callBack)=>{
-        pool.query("SELECT * from student where email = ?",
+        pool.query("SELECT * from users where email = ?",
         [
             data.username
         ],
