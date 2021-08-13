@@ -55,9 +55,9 @@ module.exports = {
     },
 
     getUserByEmail: (data,callBack)=>{
-        pool.query("SELECT * from users where email = ?",
+        pool.query("SELECT * from users where phone = ?",
         [
-            data.username
+            data.phone
         ],
         (error,results,fields)=>{
             if(error){
