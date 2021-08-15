@@ -1,76 +1,75 @@
-const { create, updateQuestion,answerQuestion, deleteQuestion } = require("../Services/question-service");
+const { create, updateVehicle, deleteVehicle,listVehicle } = require("../Services/vehicle-service");
 module.exports = {
-    addQuestion : (req, res) => {
+    addVehicle : (req, res) => {
         const body = req.body;
         create(body,(err,result)=>{
             if (err){
                 console.log(err);
                return res.status(200),json({
                     success:0,
-                    message:"Unable to create question",
+                    message:"Unable to add vehicle",
                 });
             }
             return res.status(200).json({
                 success:1,
-                message:"successfully question added to queue",
+                message:"successfully vehicle added to queue",
                 data:result
             });
             
         });
     },
-    updateQuestion : (req, res) => {
+    updateVehicle : (req, res) => {
         const body = req.body;
-        updateQuestion(body,(err,result)=>{
+        updateVehicle(body,(err,result)=>{
             if (err){
                 console.log(err);
                return res.status(200),json({
                     success:0,
-                    message:"Unable to update question",
+                    message:"Unable to update vehicle",
                 });
             }
             return res.status(200).json({
                 success:1,
-                message:"successfully question updated",
+                message:"successfully vehicle updated",
                 data:result
             });
             
         });
     },
-    answerQuestion : (req, res) => {
+    deleteVehicle : (req, res)=>{
         const body = req.body;
-        answerQuestion(body,(err,result)=>{
+        deleteVehicle(body,(err,result)=>{
             if (err){
                 console.log(err);
-               return res.status(200),json({
+                return res.status(200),json({
                     success:0,
-                    message:"Unable to answer this question",
+                    message:"Vehicle unable delete",
                 });
             }
             return res.status(200).json({
                 success:1,
-                message:"successfully answered this question",
+                message:"vehicle removed successfully",
                 data:result
             });
             
         });
     },
-    deleteQuestion : (req, res)=>{
+    listVehicle:(req, res)=>{
         const body = req.body;
-        deleteQuestion(body,(err,result)=>{
+        listVehicle(body,(err,results)=>{
             if (err){
                 console.log(err);
-               return res.status(200),json({
+                return res.status(200),json({
                     success:0,
-                    message:"question unable delete",
+                    message:"Vehicle unable delete",
                 });
             }
             return res.status(200).json({
                 success:1,
-                message:"question deleted successfully",
-                data:result
+                message:"list fetched successfully",
+                data:results
             });
-            
-        });
+        })
     }
 
 }
