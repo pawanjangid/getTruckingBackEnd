@@ -5,7 +5,7 @@ module.exports = {
     create: (data,callBack)=>{
 
         pool.query(
-            "insert into orders(vehicle_id,preferred_driver,user_id,amount,locations,asap,time) values(?,?,?,?,?,?)",
+            "insert into orders(vehicle_id,preferred_driver,user_id,amount,locations,asap,time) values(?,?,?,?,?,?,?)",
             [
                 data.vehicle_id,
                 data.preferred_driver,
