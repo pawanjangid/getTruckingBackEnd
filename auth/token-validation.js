@@ -13,7 +13,7 @@ module.exports = {
                     });
                 }else{
                     
-                    req.body.user_id=decoded.result.std_id
+                    req.body.user_id=decoded.result.user_id
                     req.body.role = 'user'
                     next();
                 }
