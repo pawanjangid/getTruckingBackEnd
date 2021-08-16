@@ -11,7 +11,7 @@ module.exports = {
                 data.preferred_driver,
                 data.user_id,
                 data.amount,
-                JSON.stringify(data.locations),
+                data.locations,
                 data.asap,
                 Math.floor(Date.now() /1000)],
             (error,results,fields)=>{
