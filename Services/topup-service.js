@@ -3,11 +3,11 @@ const pool = require("../config/database");
 module.exports = {
     create: (data, callBack) => {
         pool.query(
-            "insert into class(name, description, status) values(?,?,?)",
+            "insert into topups(amount, offers, time) values(?,?,?)",
             [
-                data.name,
-                data.description,
-                'active'
+                data.amount,
+                data.offers,
+                Math.floor(Date.now() /1000)
             ],
             (error,results,fields) => {
                 if(error){
@@ -18,8 +18,8 @@ module.exports = {
             )
     },
 
-    classList: (callBack) => {
-        pool.query("SELECT * FROM class ORDER BY class_id DESC",[],
+    topupList: (callBack) => {
+        pool.query("SELECT * FROM topups",[],
         (error,results,fields) => {
             if(error){
                 callBack(error);

@@ -1,8 +1,8 @@
-const { classList,create } = require("../Services/class-service");
+const { topupList,create } = require("../Services/topup-service");
 
 module.exports = {
-    getClass : (req, res) => {
-            classList((err,results) => {
+    topupList : (req, res) => {
+        topupList((err,results) => {
                     if(err){
                         console.log(err);
                         return res.status(500).json({
@@ -17,7 +17,7 @@ module.exports = {
                     })
             });
     },
-    classAdd : (req, res) => {
+    topupAdd : (req, res) => {
         const body = req.body;
         create(body,(err,results) => {
             if(err){
