@@ -3,7 +3,7 @@ const pool = require("../config/database");
 module.exports = {
     create: (data, callBack) => {
         pool.query(
-            "insert into users(firstName, lastName, email, phone, password,createdAt) values(?,?,?,?,?,?)",
+            "insert into driver(firstName, lastName, email, phone, password,createdAt) values(?,?,?,?,?,?)",
             [
                 data.firstName,
                 data.lastName,
@@ -21,8 +21,8 @@ module.exports = {
             )
     },
 
-    userList: (callBack) => {
-        pool.query("SELECT * FROM users",[],
+    driverList: (callBack) => {
+        pool.query("SELECT * FROM driver",[],
         (error,results,fields) => {
             if(error){
                 callBack(error);
@@ -31,9 +31,9 @@ module.exports = {
         }
         )
     },
-    userById: (data,callBack) => {
+    driverById: (data,callBack) => {
         console.log(data)
-        pool.query("SELECT * FROM users where user_id = ?",[data.user_id],
+        pool.query("SELECT * FROM driver where driver_id = ?",[data.driver_id],
             (error,results,fields)=>{
                 if(error){
                     callBack(error);
@@ -43,8 +43,8 @@ module.exports = {
         )
     },
 
-    updateUser : (data,callBack) => {
-        pool.query("UPDATE users SET firstName = ?, lastName=? WHERE user_id = ?", [data.firstName,data.lastName,data.user_id],
+    updateDriver : (data,callBack) => {
+        pool.query("UPDATE driver SET firstName = ?, lastName=? WHERE driver_id = ?", [data.firstName,data.lastName,data.driver_id],
             (error,results,fields)=>{
                 if(error){
                     callBack(error);
@@ -54,8 +54,8 @@ module.exports = {
         )
     },
 
-    getUserByEmail: (data,callBack)=>{
-        pool.query("SELECT * from users where phone = ?",
+    getDriverByEmail: (data,callBack)=>{
+        pool.query("SELECT * from driver where phone = ?",
         [
             data.phone
         ],

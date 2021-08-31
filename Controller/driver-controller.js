@@ -1,4 +1,4 @@
-const { create, userList, userById, updateUser, getUserByEmail } = require("../Services/users-service");
+const { create, driverList, driverById, updateDriver, getDriverByEmail } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -21,14 +21,14 @@ module.exports = {
         });
     },
 
-    getUser : (req,res) => {
+    getDriver : (req,res) => {
         console.log(req.body.role)
-        userList((err,results) => {
+        driverList((err,results) => {
             if(err){
                 console.log(err);
                 return res.status(500).json({
                     success:0,
-                    message:"user list not found"
+                    message:"Driver list not found"
                 });
             }
             return res.status(200).json({
@@ -40,28 +40,28 @@ module.exports = {
 
     },
 
-    userById: (req,res) => {
+    driverById: (req,res) => {
         const body = req.body;
-        userById(body,(err,results)=>{
+        driverById(body,(err,results)=>{
             if(err){
                 console.log(err);
                 return res.status(500).json({
                     success:0,
-                    message:"user list not found"
+                    message:"Driver list not found"
                 });
             }
 
             return res.status(200).json({
                 success:1,
-                message:"User data here",
+                message:"Driver data here",
                 data:results
             });
             
         });
     },
-    updateUser: (req,res)=>{
+    updateDriver: (req,res)=>{
         const body = req.body;
-        updateUser(body,(err,result)=>{
+        updateDriver(body,(err,result)=>{
             if(err){
                 console.log(err);
                 return res.status(500).json({
@@ -79,12 +79,12 @@ module.exports = {
     },
     login: (req,res)=>{
         const body = req.body;
-        getUserByEmail(body,(err,results)=>{
+        getDriverByEmail(body,(err,results)=>{
             if(err){
                 console.log(err);
                 return res.status(500).json({
                     success:0,
-                    message:"user list not found"
+                    message:"Driver list not found"
                 });
             }
             if(!results){
