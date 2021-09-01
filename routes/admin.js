@@ -4,7 +4,7 @@ const { addBatch, getBatch} = require('../Controller/batch-controller');
 const { listVehicle,addVehicle }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner } = require('../Controller/adsManage-controller');
 const { listCoupon, addCoupon } = require('../Controller/coupon-controller');
-
+const { headers } = require('../Controller/admin-controller')
 const router = require('express').Router();
 //const { checkToken } = require('../auth/token-admin-validation');
 
@@ -18,4 +18,7 @@ router.get("/banner",listBanner);
 router.post("/banner",addBanner);
 router.get("/coupon",listCoupon);
 router.post("/coupon",addCoupon);
+router.get("/headers",headers);
+
+
 module.exports = router;

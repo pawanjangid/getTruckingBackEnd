@@ -1,4 +1,4 @@
-const { getUserByEmail } = require("../Services/admin-service");
+const { getUserByEmail,headers } = require("../Services/admin-service");
 const { compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 
@@ -38,4 +38,22 @@ module.exports = {
             }
         });
     },
+    headers:(req, res)=>{
+        const body = req.body;
+        headers(body,(err,results)=>{
+            if (err){
+                console.log(err);
+                return res.status(200),json({
+                    success:0,
+                    message:"List unable to fetch",
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"list fetched successfully",
+                data:results[0]
+            });
+        })
+    }
+
 }
