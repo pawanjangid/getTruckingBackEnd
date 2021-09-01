@@ -15,10 +15,10 @@ module.exports = {
 
 
         pool.query(
-            "insert into vehicles(vehicle_name,descrition,dimension,baseprice,parKmcost,image,time) values(?,?,?,?,?,?,?)",
+            "insert into vehicles(vehicle_name,description,dimension,baseprice,parKmcost,image,time) values(?,?,?,?,?,?,?)",
             [
                 data.vehicle_name,
-                data.descrition,
+                data.description,
                 data.dimension,
                 data.baseprice,
                 data.parKmcost,
