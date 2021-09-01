@@ -3,6 +3,8 @@ const { getDriver } = require('../Controller/driver-controller');
 const { addBatch, getBatch} = require('../Controller/batch-controller');
 const { listVehicle,addVehicle }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner } = require('../Controller/adsManage-controller');
+const { listCoupon, addCoupon } = require('../Controller/coupon-controller');
+
 const router = require('express').Router();
 //const { checkToken } = require('../auth/token-admin-validation');
 
@@ -14,4 +16,6 @@ router.get("/vehicles",listVehicle);
 router.post("/vehicles",addVehicle);
 router.get("/banner",listBanner);
 router.post("/banner",addBanner);
+router.get("/coupon",listCoupon);
+router.post("/coupon",addCoupon);
 module.exports = router;
