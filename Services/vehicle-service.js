@@ -15,11 +15,13 @@ module.exports = {
 
 
         pool.query(
-            "insert into vehicles(vehicle_name,descrition,dimension,image,time) values(?,?,?,?,?)",
+            "insert into vehicles(vehicle_name,descrition,dimension,baseprice,parKmcost,image,time) values(?,?,?,?,?,?,?)",
             [
                 data.vehicle_name,
                 data.descrition,
                 data.dimension,
+                data.baseprice,
+                data.parKmcost,
                 data.image,
                 Math.floor(Date.now() /1000)],
             (error,results,fields)=>{
