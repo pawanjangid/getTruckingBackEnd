@@ -48,5 +48,18 @@ module.exports = {
             }
             return callBack(null,results);
         })
+    },
+    listAllOrder:(data,callBack)=>{
+        console.log(process.env)
+        pool.query("SELECT * FROM `orders` INNER JOIN `users` ON `orders`.user_id=`users`.user_id INNER JOIN `vehicles` ON `orders`.vehicle_id=`vehicles`.vehicle_id",
+        [
+            data.user_id
+        ],
+        (error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        })
     }
 }

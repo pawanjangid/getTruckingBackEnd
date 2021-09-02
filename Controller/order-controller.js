@@ -1,4 +1,4 @@
-const { create,listOrder } = require("../Services/order-service");
+const { create,listOrder,listAllOrder } = require("../Services/order-service");
 
 module.exports = {
     createOrder : (req,res)=>{
@@ -20,6 +20,23 @@ module.exports = {
     listOrder:(req, res)=>{
         const body = req.body;
         listOrder(body,(err,results)=>{
+            if (err){
+                console.log(err);
+                return res.status(200),json({
+                    success:0,
+                    message:"Unable to fetch service results",
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"list fetched successfully",
+                data:results
+            });
+        })
+    },
+    listAllOrder:(req, res)=>{
+        const body = req.body;
+        listAllOrder(body,(err,results)=>{
             if (err){
                 console.log(err);
                 return res.status(200),json({
