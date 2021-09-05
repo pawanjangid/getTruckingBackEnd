@@ -5,7 +5,7 @@ module.exports = {
     create: (data,callBack)=>{
 
         pool.query(
-            "insert into orders(vehicle_id,preferred_driver,user_id,amount,locations,asap,time) values(?,?,?,?,?,?,?)",
+            "insert into orders(vehicle_id,preferred_driver,user_id,amount,locations,asap,pickLatitude,pickLongitude,duration,distance,time) values(?,?,?,?,?,?,?,?,?,?,?)",
             [
                 data.vehicle_id,
                 data.preferred_driver,
@@ -13,6 +13,10 @@ module.exports = {
                 data.amount,
                 data.locations,
                 data.asap,
+                data.pickLatitude,
+                data.pickLongitude,
+                data.duration,
+                data.distance,
                 Math.floor(Date.now() /1000)],
             (error,results,fields)=>{
             if(error){
