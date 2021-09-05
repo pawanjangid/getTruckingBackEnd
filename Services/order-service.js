@@ -21,6 +21,7 @@ module.exports = {
             (error,results,fields)=>{
             if(error){
                 callBack(error);
+                console.log(error);
             }
             return callBack(null,results);
         });
