@@ -59,7 +59,18 @@ module.exports = {
     },
 
     updateDriver : (data,callBack) => {
-        pool.query("UPDATE driver SET firstName = ?, lastName=? WHERE driver_id = ?", [data.firstName,data.lastName,data.driver_id],
+        pool.query("UPDATE driver SET active = ? WHERE driver_id = ?", [data.firstName,data.lastName,data.driver_id],
+            (error,results,fields)=>{
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
+    },
+
+    driverActive : (data,callBack) => {
+        pool.query("UPDATE driver SET active = ? WHERE driver_id = ?", [data.active,data.driver_id],
             (error,results,fields)=>{
                 if(error){
                     callBack(error);

@@ -1,4 +1,4 @@
-const { registration,updateDriver,login } = require('../Controller/driver-controller');
+const { registration,updateDriver,login,driverActive } = require('../Controller/driver-controller');
 const { getCountries } = require('../Controller/Country-controller');
 const { listOrder,createOrder } = require('../Controller/order-controller');
 const router = require('express').Router();
@@ -15,5 +15,5 @@ router.get("/order",checkToken, listOrder)
 router.patch("/", checkToken, updateDriver)
 router.post("/login",login);
 router.post('/upload', fileUpload);
-
+router.post('/active',checkToken,driverActive)
 module.exports = router;

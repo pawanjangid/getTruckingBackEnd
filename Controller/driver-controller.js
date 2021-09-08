@@ -1,4 +1,4 @@
-const { create, driverList, driverById, updateDriver, getDriverByEmail } = require("../Services/driver-service");
+const { create, driverList, driverById, updateDriver, driverActive, getDriverByEmail } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -58,6 +58,24 @@ module.exports = {
             });
             
         });
+    },
+    driverActive: (req,res)=>{
+        const body = req.body;
+        driverActive(body,(err,result)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"unable to set status online"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"you are online now",
+                data:result
+            });
+        });
+
     },
     updateDriver: (req,res)=>{
         const body = req.body;
