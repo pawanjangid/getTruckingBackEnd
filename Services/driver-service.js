@@ -79,6 +79,18 @@ module.exports = {
             }
         )
     },
+    driverLocation : (data,callBack) => {
+        console.log(data);
+        pool.query("UPDATE driver SET latitude = ?,longitude = ? WHERE driver_id = ?",
+        [data.latitude,data.longitude,data.driver_id],
+            (error,results,fields)=>{
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
+    },
 
     getDriverByEmail: (data,callBack)=>{
         pool.query("SELECT * from driver where phone = ?",
