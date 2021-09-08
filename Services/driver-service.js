@@ -5,8 +5,7 @@ module.exports = {
         pool.query(
             "insert into driver(fullName, email, phone, password,createdAt,Identification,emergency_contact_person,emergency_contact_number,driving_license_expiry,vehicle_type,vehicle_modal,License_plate_number,ID_card_front,ID_card_back,photo,Proof_of_Residency,Driving_license,Vehicle_License,vehicle_body,insurance,document_status) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             [
-                data.firstName,
-                data.lastName,
+                data.fullName,
                 data.email,
                 data.phone,
                 data.password,
@@ -26,7 +25,7 @@ module.exports = {
                 data.Vehicle_License,
                 data.vehicle_body,
                 data.insurance,
-                data.document_status
+                0
             ],
             (error,results,fields) => {
                 if(error){
