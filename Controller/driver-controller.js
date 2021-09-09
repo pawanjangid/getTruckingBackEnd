@@ -1,4 +1,4 @@
-const { create, driverList, driverById, updateDriver, driverActive, getDriverByEmail,driverLocation,getOrderByLocation } = require("../Services/driver-service");
+const { create, driverList, driverById, updateDriver, driverActive, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -125,6 +125,24 @@ module.exports = {
             return res.status(200).json({
                 success:1,
                 message:"User data updated",
+                data:result
+            });
+        });
+
+    },
+    grabOrder: (req,res)=>{
+        const body = req.body;
+        grabOrder(body,(err,result)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Unable to Grab Order Try again"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"Order successfully grabbed",
                 data:result
             });
         });

@@ -119,5 +119,17 @@ module.exports = {
             }
             return callBack(null,results);
         })
+    },
+    grabOrder : (data,callBack) => {
+        console.log(data);
+        pool.query("UPDATE orders SET driver_id = ?,status = 'assigned' WHERE order_id = ?",
+        [data.driver_id,data.order_id],
+            (error,results,fields)=>{
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
     }
 };
