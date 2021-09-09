@@ -1,4 +1,4 @@
-const { create, driverList, driverById, updateDriver, driverActive, getDriverByEmail,driverLocation } = require("../Services/driver-service");
+const { create, driverList, driverById, updateDriver, driverActive, getDriverByEmail,driverLocation,getOrderByLocation } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -93,6 +93,24 @@ module.exports = {
                 data:result
             });
         });
+    },
+    getOrderByLocation: (req,res)=>{
+        const body = req.body;
+        getOrderByLocation(body,(err,result)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"user list not found"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"User data updated",
+                data:result
+            });
+        });
+
     },
     updateDriver: (req,res)=>{
         const body = req.body;

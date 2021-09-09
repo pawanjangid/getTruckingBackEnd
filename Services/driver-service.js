@@ -104,5 +104,20 @@ module.exports = {
             return callBack(null,results[0]);
         }
         )
+    },
+    getOrderByLocation:(data,callBack) => {
+        console.log(data);
+        pool.query("SELECT *, ( 3959 * acos(cos(radians(?)) * cos(radians(`pickLatitude`)) * cos(radians(`pickLongitude`) - radians(?)) + sin(radians(?)) * sin(radians(`pickLatitude`))) ) AS distanceBetween FROM orders WHERE `status`='on_going' ORDER BY distanceBetween LIMIT 0, 20",
+        [
+            data.latitude,
+            data.longitude,
+            data.latitude
+        ]
+        ,(error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        })
     }
 };
