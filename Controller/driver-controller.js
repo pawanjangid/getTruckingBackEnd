@@ -1,4 +1,4 @@
-const { create, driverList, driverById, updateDriver, driverActive, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder } = require("../Services/driver-service");
+const { create, driverList, driverById, updateDriver, driverActive, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -143,6 +143,42 @@ module.exports = {
             return res.status(200).json({
                 success:1,
                 message:"Order successfully grabbed",
+                data:result
+            });
+        });
+
+    },
+    favoriteDriver: (req,res)=>{
+        const body = req.body;
+        favoriteDriver(body,(err,result)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Driver is not register or may already in list"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"Driver Added successfully",
+                data:result
+            });
+        });
+
+    },
+    favoriteDriverList: (req,res)=>{
+        const body = req.body;
+        favoriteDriverList(body,(err,result)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Haven't any driver"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"Drivers here",
                 data:result
             });
         });

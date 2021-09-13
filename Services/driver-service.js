@@ -106,7 +106,6 @@ module.exports = {
         )
     },
     getOrderByLocation:(data,callBack) => {
-        console.log(data);
         pool.query("SELECT *, ( 3959 * acos(cos(radians(?)) * cos(radians(`pickLatitude`)) * cos(radians(`pickLongitude`) - radians(?)) + sin(radians(?)) * sin(radians(`pickLatitude`))) ) AS distanceBetween FROM orders WHERE `status`='on_going' ORDER BY distanceBetween LIMIT 0, 20",
         [
             data.latitude,
@@ -131,5 +130,58 @@ module.exports = {
                 return callBack(null,results);
             }
         )
+    },
+    favoriteDriver : (data,callBack) => {
+        console.log(data);
+        pool.query("SELECT * FROM driver where phone=?",
+        [
+            data.phone
+        ],(error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            if(results.length > 0){
+                pool.query("SELECT * FROM favorite_driver where driver_id=? AND user_id=?",
+                [
+                    results[0].driver_id,
+                    data.user_id
+                ],
+                (error,datalist,fields)=>{
+                    if(error){
+                        return callBack(error);
+                    }
+                    if(datalist.length > 0){
+                        return callBack(true);
+                    }else{
+                        pool.query("INSERT INTO favorite_driver(driver_id,user_id,addedTime) values(?,?,?)",
+                        [
+                            results[0].driver_id,
+                            data.user_id,
+                            Math.floor(Date.now() /1000)
+                        ],
+                        (error,inserted,fields)=>{
+                            if(error){
+                                return callBack(error);
+                            }
+                            return callBack(null,inserted)
+                        })
+                    }
+                })
+            }else{
+                return callBack(true);
+            }
+        })
+    },
+    favoriteDriverList: (data,callBack)=>{
+        pool.query("SELECT * FROM favorite_driver INNER JOIN driver ON favorite_driver.driver_id=driver.driver_id where user_id=?",
+        [
+            data.user_id
+        ],
+        (error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        })
     }
 };

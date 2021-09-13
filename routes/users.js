@@ -5,6 +5,7 @@ const { listOrder,createOrder } = require('../Controller/order-controller');
 const router = require('express').Router();
 const { checkToken } = require('../auth/token-validation');
 const { topupList } = require('../Controller/topup-controller');
+const {favoriteDriver,favoriteDriverList} = require('../Controller/driver-controller');
 
 router.post("/", registration)
 router.get("/countries", getCountries)
@@ -14,6 +15,7 @@ router.post("/order",checkToken, createOrder)
 router.get("/order",checkToken, listOrder)
 router.patch("/", checkToken, updateUser)
 router.post("/login",login);
-
+router.post("/favoriteDriver",checkToken,favoriteDriver);
+router.get("/favoriteDriver",checkToken,favoriteDriverList);
 
 module.exports = router;
