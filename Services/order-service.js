@@ -3,7 +3,6 @@ require('dotenv').config()
 const pool = require('../config/database');
 module.exports = {
     create: (data,callBack)=>{
-
         pool.query(
             "insert into orders(vehicle_id,preferred_driver,user_id,amount,locations,asap,pickLatitude,pickLongitude,duration,distance,time) values(?,?,?,?,?,?,?,?,?,?,?)",
             [
@@ -42,7 +41,6 @@ module.exports = {
         )
     },
     listOrder:(data,callBack)=>{
-        console.log(process.env)
         pool.query("SELECT * FROM `orders` INNER JOIN `users` ON `orders`.user_id=`users`.user_id INNER JOIN `vehicles` ON `orders`.vehicle_id=`vehicles`.vehicle_id where `orders`.user_id = ?",
         [
             data.user_id
@@ -55,7 +53,6 @@ module.exports = {
         })
     },
     listAllOrder:(data,callBack)=>{
-        console.log(process.env)
         pool.query("SELECT * FROM `orders` INNER JOIN `users` ON `orders`.user_id=`users`.user_id INNER JOIN `vehicles` ON `orders`.vehicle_id=`vehicles`.vehicle_id",
         [
             data.user_id
