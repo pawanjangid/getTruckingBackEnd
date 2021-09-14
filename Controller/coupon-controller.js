@@ -1,4 +1,4 @@
-const { create, deleteCoupon,listCoupon } = require("../Services/coupon-service");
+const { create, deleteCoupon,listCoupon,applyCoupon } = require("../Services/coupon-service");
 module.exports = {
     addCoupon : (req, res) => {
         const body = req.body;
@@ -39,6 +39,23 @@ module.exports = {
     listCoupon:(req, res)=>{
         const body = req.body;
         listCoupon(body,(err,results)=>{
+            if (err){
+                console.log(err);
+                return res.status(200),json({
+                    success:0,
+                    message:"List unable to fetch",
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"list fetched successfully",
+                data:results
+            });
+        })
+    },
+    applyCoupon:(req, res)=>{
+        const body = req.body;
+        applyCoupon(body,(err,results)=>{
             if (err){
                 console.log(err);
                 return res.status(200),json({

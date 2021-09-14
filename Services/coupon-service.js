@@ -33,7 +33,6 @@ module.exports = {
         )
     },
     listCoupon:(data,callBack)=>{
-        console.log(process.env)
         pool.query("SELECT * FROM coupons",
         [],
         (error,results,fields)=>{
@@ -41,6 +40,21 @@ module.exports = {
                 callBack(error);
             }
             return callBack(null,results);
+        })
+    },
+    applyCoupon:(data,callBack)=>{
+        pool.query("SELECT * FROM coupons where coupon = ?",
+        [data.coupon],
+        (error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            if(results.length > 0){
+                return callBack(null,results[0]);
+            }else{
+                return callBack(true);
+            }
+            
         })
     }
 }

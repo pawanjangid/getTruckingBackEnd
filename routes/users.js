@@ -6,6 +6,8 @@ const router = require('express').Router();
 const { checkToken } = require('../auth/token-validation');
 const { topupList } = require('../Controller/topup-controller');
 const {favoriteDriver,favoriteDriverList} = require('../Controller/driver-controller');
+const { applyCoupon } = require('../Controller/coupon-controller');
+
 
 router.post("/", registration)
 router.get("/countries", getCountries)
@@ -17,5 +19,7 @@ router.patch("/", checkToken, updateUser)
 router.post("/login",login);
 router.post("/favoriteDriver",checkToken,favoriteDriver);
 router.get("/favoriteDriver",checkToken,favoriteDriverList);
+router.post("/applyCoupon",checkToken,applyCoupon);
+
 
 module.exports = router;
