@@ -21,5 +21,4 @@ router.post("/favoriteDriver",checkToken,favoriteDriver);
 router.get("/favoriteDriver",checkToken,favoriteDriverList);
 router.post("/applyCoupon",checkToken,applyCoupon);
 
-
 module.exports = router;
