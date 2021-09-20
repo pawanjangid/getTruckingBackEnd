@@ -3,7 +3,7 @@ const pool = require("../config/database");
 module.exports = {
     create: (data, callBack) => {
         pool.query(
-            "insert into bankDetail(drive_id, accountNumber, bankCode, Benifecary, BankName, addedAt) values(?,?,?,?,?,?)",
+            "insert into bankDetail(driver_id, accountNumber, bankCode, Benifecary, BankName, addedAt) values(?,?,?,?,?,?)",
             [
                 data.driver_id,
                 data.accountNumber,
