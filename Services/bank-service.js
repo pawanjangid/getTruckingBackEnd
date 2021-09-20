@@ -5,7 +5,7 @@ module.exports = {
         pool.query(
             "insert into bankDetail(drive_id, accountNumber, bankCode, Benifecary, BankName, addedAt) values(?,?,?,?,?,?)",
             [
-                data.drive_id,
+                data.driver_id,
                 data.accountNumber,
                 data.bankCode,
                 data.Benifecary,
@@ -23,7 +23,7 @@ module.exports = {
 
     bankList: (callBack) => {
         pool.query("SELECT * FROM bankDetail where driver_id=?",[
-            data.drive_id
+            data.driver_id
         ],
         (error,results,fields) => {
             if(error){
