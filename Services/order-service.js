@@ -21,8 +21,17 @@ module.exports = {
             if(error){
                 callBack(error);
                 console.log(error);
+            }else{
+                pool.query("SELECT * FROM orders WHERE order_id=?",[
+                    results.insertId
+                ],(error,results,fields)=>{
+                    if(error){
+                        callBack(error);
+                    }
+                    return callBack(null,results);
+                })
             }
-            return callBack(null,results);
+            
         });
     },
 
