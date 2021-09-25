@@ -72,5 +72,15 @@ module.exports = {
             }
             return callBack(null,results);
         })
+    },
+    orderById:(data,callBack)=>{
+        pool.query("SELECT * FROM orders WHERE order_id=?",[
+            data.order_id
+        ],(error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results[0]);
+        })
     }
 }

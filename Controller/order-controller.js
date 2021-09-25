@@ -1,4 +1,4 @@
-const { create,listOrder,listAllOrder } = require("../Services/order-service");
+const { create,listOrder,listAllOrder,orderById } = require("../Services/order-service");
 
 module.exports = {
     createOrder : (req,res)=>{
@@ -47,6 +47,23 @@ module.exports = {
             return res.status(200).json({
                 success:1,
                 message:"list fetched successfully",
+                data:results
+            });
+        })
+    },
+    orderById:(req, res)=>{
+        const body = req.body;
+        orderById(body,(err,results)=>{
+            if (err){
+                console.log(err);
+                return res.status(200),json({
+                    success:0,
+                    message:"Order is not found",
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"Order found successfully",
                 data:results
             });
         })
