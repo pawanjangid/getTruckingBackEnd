@@ -23,6 +23,35 @@ module.exports = {
             }
             return callBack(null,results);
         })
-    }
-    
+    },
+    create: (data, callBack) => {
+        pool.query(
+            "insert into admin(name, email, phone, password,role,createdAt) values(?,?,?,?,?,?)",
+            [
+                data.name,
+                data.email,
+                data.phone,
+                data.password,
+                data.role,
+                Math.floor(Date.now() /1000)
+            ],
+            (error,results,fields) => {
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+            )
+    },
+    adminList: (callBack) => {
+        pool.query("SELECT * FROM admin",[],
+        (error,results,fields) => {
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        }
+        )
+    },
+
 }

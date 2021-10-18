@@ -1,7 +1,6 @@
-const { getUserByEmail,headers } = require("../Services/admin-service");
-const { compareSync } = require("bcrypt");
+const { getUserByEmail,headers,create,adminList } = require("../Services/admin-service");
+const { compareSync,genSaltSync,hashSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
-
 module.exports = {
     login: (req,res)=>{
         const body = req.body;
@@ -54,6 +53,43 @@ module.exports = {
                 data:results[0]
             });
         })
-    }
+    },
+    adminAdd: (req,res) => {
+        const body = req.body;
+        const salt = genSaltSync(10);
+        body.password = hashSync(body.password,salt);
+        create(body,(err,results) => {
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Database connection error",
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                data:results
+            })
+        });
+    },
+
+    adminList : (req,res) => {
+        console.log(req.body.role)
+        adminList((err,results) => {
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"user list not found"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"successful",
+                data:results
+            })
+        });
+
+    },
 
 }
