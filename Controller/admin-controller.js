@@ -1,4 +1,5 @@
 const { getUserByEmail,headers,create,adminList } = require("../Services/admin-service");
+const {payoutList} = require("../Services/payout-service");
 const { compareSync,genSaltSync,hashSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -76,6 +77,25 @@ module.exports = {
     adminList : (req,res) => {
         console.log(req.body.role)
         adminList((err,results) => {
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"user list not found"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"successful",
+                data:results
+            })
+        });
+
+    },
+
+    PayoutList : (req,res) => {
+        console.log(req.body.role)
+        payoutList((err,results) => {
             if(err){
                 console.log(err);
                 return res.status(500).json({
