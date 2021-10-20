@@ -11,6 +11,18 @@ module.exports = {
             return callBack(null,results);
         }
         )
+    },
+    AllCountries: (data,callBack)=>{
+        pool.query("SELECT * from country",
+        [],
+        (error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        }
+        )
     }
+
     
 }

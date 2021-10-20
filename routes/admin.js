@@ -5,7 +5,7 @@ const { listVehicle,addVehicle }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner } = require('../Controller/adsManage-controller');
 const { listCoupon, addCoupon } = require('../Controller/coupon-controller');
 const { headers,adminAdd,adminList,PayoutList } = require('../Controller/admin-controller');
-const { getCountries } = require('../Controller/Country-controller');
+const { AllCountries } = require('../Controller/Country-controller');
 const {listAllOrder } = require('../Controller/order-controller');
 
 const router = require('express').Router();
@@ -24,7 +24,7 @@ router.post("/banner",addBanner);
 router.get("/coupon",listCoupon);
 router.post("/coupon",addCoupon);
 router.get("/headers",headers);
-router.get("/country",getCountries);
+router.get("/country",AllCountries);
 router.get("/orders",listAllOrder);
 router.get("/PayoutList",PayoutList);
 
