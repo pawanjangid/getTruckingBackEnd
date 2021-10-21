@@ -53,5 +53,35 @@ module.exports = {
         }
         )
     },
+    updateAdmin : (data,callBack) => {
+        pool.query("UPDATE admin SET name = ?, email=?, password=?, phone=? WHERE admin_id = ?", 
+        [
+            data.name,
+            data.email,
+            data.password,
+            data.phone,
+            data.admin_id,
+        ],
+            (error,results,fields)=>{
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
+    },
+    removeAdmin: (data,callBack) => {
+        pool.query("DELETE from admin where admin_id=?", 
+        [
+            data.admin_id
+        ],
+            (error,results,fields)=>{
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
+    },
 
 }

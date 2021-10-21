@@ -1,4 +1,4 @@
-const { getUserByEmail,headers,create,adminList } = require("../Services/admin-service");
+const { getUserByEmail,headers,create,adminList,updateAdmin,removeAdmin } = require("../Services/admin-service");
 const {payoutList} = require("../Services/payout-service");
 const { compareSync,genSaltSync,hashSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
@@ -74,6 +74,25 @@ module.exports = {
         });
     },
 
+    updateAdmin: (req,res) => {
+        const body = req.body;
+        const salt = genSaltSync(10);
+        body.password = hashSync(body.password,salt);
+        updateAdmin(body,(err,results) => {
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Database connection error",
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                data:results
+            })
+        });
+    },
+
     adminList : (req,res) => {
         console.log(req.body.role)
         adminList((err,results) => {
@@ -87,6 +106,25 @@ module.exports = {
             return res.status(200).json({
                 success:1,
                 message:"successful",
+                data:results
+            })
+        });
+
+    },
+
+    removeAdmin : (req,res) => {
+        console.log(req.body.role)
+        removeAdmin((err,results) => {
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"user Removed"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"successfully",
                 data:results
             })
         });
