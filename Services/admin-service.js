@@ -54,6 +54,7 @@ module.exports = {
         )
     },
     updateAdmin : (data,callBack) => {
+        console.log(data);
         pool.query("UPDATE admin SET name = ?, email=?, password=?, phone=? WHERE admin_id = ?", 
         [
             data.name,
