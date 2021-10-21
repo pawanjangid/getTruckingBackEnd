@@ -1,4 +1,4 @@
-const { create, driverList, driverById, updateDriver, driverActive, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList } = require("../Services/driver-service");
+const { create, driverList, driverById,removeDriver, updateDriver, driverActive, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -90,6 +90,23 @@ module.exports = {
             return res.status(200).json({
                 success:1,
                 message:"you are online now",
+                data:result
+            });
+        });
+    },
+    removeDriver: (req,res)=>{
+        const body = req.body;
+        removeDriver(body,(err,result)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Unable to remove driver"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"Driver Removed",
                 data:result
             });
         });
