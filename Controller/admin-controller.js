@@ -95,7 +95,7 @@ module.exports = {
     },
 
     adminList : (req,res) => {
-        console.log(req.body.role)
+        
         adminList((err,results) => {
             if(err){
                 console.log(err);
@@ -114,7 +114,7 @@ module.exports = {
     },
 
     removeAdmin : (req,res) => {
-        
+        const body = req.body;
         removeAdmin(body,(err,results) => {
             if(err){
                 console.log(err);
