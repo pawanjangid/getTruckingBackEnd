@@ -42,7 +42,6 @@ module.exports = {
         )
     },
     listBanner:(data,callBack)=>{
-        console.log(process.env)
         pool.query("SELECT * FROM banner",
         [],
         (error,results,fields)=>{
