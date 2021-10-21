@@ -1,7 +1,7 @@
 const { getUser } = require('../Controller/user-controller');
 const { getDriver,registration,removeDriver } = require('../Controller/driver-controller');
 const { addBatch, getBatch} = require('../Controller/batch-controller');
-const { listVehicle,addVehicle }  = require('../Controller/vehicle-controller');
+const { listVehicle,addVehicle,deleteVehicle }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner } = require('../Controller/adsManage-controller');
 const { listCoupon, addCoupon } = require('../Controller/coupon-controller');
 const { headers,adminAdd,adminList,PayoutList,updateAdmin,removeAdmin } = require('../Controller/admin-controller');
@@ -31,5 +31,5 @@ router.get("/orders",listAllOrder);
 router.get("/PayoutList",PayoutList);
 router.post("/driver",registration)
 router.post("/removeDriver",removeDriver)
-
+router,post("/removeVehicle",deleteVehicle)
 module.exports = router;

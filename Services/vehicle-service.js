@@ -48,9 +48,9 @@ module.exports = {
     },
     deleteVehicle : (data,callBack)=>{
         pool.query(
-            "delete from vehicles where vehilce_id=?",
+            "DELETE from vehicles where vehicle_id=?",
             [
-               data.question_id
+               data.vehicle_id
             ],
             (error,results,fields)=>{
                 if(error){
