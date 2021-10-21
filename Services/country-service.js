@@ -25,7 +25,7 @@ module.exports = {
     },
     CountryStatus : (data,callBack)=>{
         pool.query("UPDATE country set status = ? WHERE id = ?",
-        [],
+        [data.status,data.id],
         (error,results,fields)=>{
             if(error){
                 callBack(error);
