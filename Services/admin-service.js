@@ -72,6 +72,7 @@ module.exports = {
         )
     },
     removeAdmin: (data,callBack) => {
+        console.log(data);
         pool.query("DELETE from admin where admin_id=?", 
         [
             data.admin_id
