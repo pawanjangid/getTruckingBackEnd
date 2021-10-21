@@ -1,4 +1,4 @@
-const { getCountries,AllCountries } = require("../Services/country-service");
+const { getCountries,AllCountries,CountryStatus } = require("../Services/country-service");
 
 module.exports = {
     getCountries: (req,res) => {
@@ -20,6 +20,22 @@ module.exports = {
     AllCountries: (req,res) => {
         const body = req.body;
         AllCountries(body,(err,results) => {
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Database connection error",
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                data:results
+            })
+        });
+    },
+    CountryStatus:(req,res) =>{
+        const body = req.body;
+        CountryStatus(body,(err,results) => {
             if(err){
                 console.log(err);
                 return res.status(500).json({

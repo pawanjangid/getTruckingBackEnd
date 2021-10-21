@@ -5,7 +5,7 @@ const { listVehicle,addVehicle,deleteVehicle }  = require('../Controller/vehicle
 const { listBanner, addBanner } = require('../Controller/adsManage-controller');
 const { listCoupon, addCoupon } = require('../Controller/coupon-controller');
 const { headers,adminAdd,adminList,PayoutList,updateAdmin,removeAdmin } = require('../Controller/admin-controller');
-const { AllCountries } = require('../Controller/Country-controller');
+const { AllCountries,CountryStatus } = require('../Controller/Country-controller');
 const {listAllOrder } = require('../Controller/order-controller');
 
 const router = require('express').Router();
@@ -31,5 +31,6 @@ router.get("/orders",listAllOrder);
 router.get("/PayoutList",PayoutList);
 router.post("/driver",registration)
 router.post("/removeDriver",removeDriver)
-router.post("/removeVehicle",deleteVehicle)
+router.post("/removeVehicle",deleteVehicle);
+router.post("/countryStatus",CountryStatus)
 module.exports = router;
