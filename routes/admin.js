@@ -1,5 +1,5 @@
 const { getUser } = require('../Controller/user-controller');
-const { getDriver } = require('../Controller/driver-controller');
+const { getDriver,registration } = require('../Controller/driver-controller');
 const { addBatch, getBatch} = require('../Controller/batch-controller');
 const { listVehicle,addVehicle }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner } = require('../Controller/adsManage-controller');
@@ -29,7 +29,7 @@ router.get("/headers",headers);
 router.get("/country",AllCountries);
 router.get("/orders",listAllOrder);
 router.get("/PayoutList",PayoutList);
-
+router.post("/driver",registration)
 
 
 module.exports = router;
