@@ -114,8 +114,8 @@ module.exports = {
     },
 
     removeAdmin : (req,res) => {
-        console.log(req.body.role)
-        removeAdmin((err,results) => {
+        
+        removeAdmin(body,(err,results) => {
             if(err){
                 console.log(err);
                 return res.status(500).json({
