@@ -31,5 +31,5 @@ router.get("/orders",listAllOrder);
 router.get("/PayoutList",PayoutList);
 router.post("/driver",registration)
 router.post("/removeDriver",removeDriver)
-router,post("/removeVehicle",deleteVehicle)
+router.post("/removeVehicle",deleteVehicle)
 module.exports = router;
