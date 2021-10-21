@@ -31,7 +31,7 @@ module.exports = {
         pool.query(
             "delete from banner where banner_id=?",
             [
-               data.question_id
+               data.banner_id
             ],
             (error,results,fields)=>{
                 if(error){
