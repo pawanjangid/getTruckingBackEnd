@@ -7,12 +7,12 @@ module.exports = {
                         console.log(err);
                         return res.status(500).json({
                             success:0,
-                            message:"user list not found"
+                            message:"Settings data not found"
                         });
                     }
                     return res.status(200).json({
                         success:1,
-                        message:"successful",
+                        message:"successfully",
                         data:results
                     })
             });
