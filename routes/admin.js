@@ -1,5 +1,5 @@
 const { getUser } = require('../Controller/user-controller');
-const { getDriver,registration,removeDriver } = require('../Controller/driver-controller');
+const { getDriver,registration,removeDriver,driverById } = require('../Controller/driver-controller');
 const { addBatch, getBatch} = require('../Controller/batch-controller');
 const { listVehicle,addVehicle,deleteVehicle }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner,deleteBanner } = require('../Controller/adsManage-controller');
@@ -17,6 +17,7 @@ router.post("/editAdmin",updateAdmin);
 router.post("/removeAdmin",removeAdmin);
 router.get("/users", getUser);
 router.get("/drivers", getDriver);
+router.post("/driverById", driverById);
 router.get("/batch/:class_id", getBatch);
 router.post("/batch",addBatch);
 router.get("/vehicles",listVehicle);
