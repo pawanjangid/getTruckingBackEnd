@@ -50,6 +50,7 @@ module.exports = {
         console.log(data);
         pool.query("SELECT * FROM driver where driver_id = ?",[data.driver_id],
             (error,results,fields)=>{
+                console.log(results)
                 if(error){
                     callBack(error);
                 }
