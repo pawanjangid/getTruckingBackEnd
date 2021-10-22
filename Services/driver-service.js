@@ -47,13 +47,13 @@ module.exports = {
         )
     },
     driverById: (data,callBack) => {
-        
+        console.log(data);
         pool.query("SELECT * FROM driver where driver_id = ?",[data.driver_id],
             (error,results,fields)=>{
                 if(error){
                     callBack(error);
                 }
-                return callBack(null,results);
+                return callBack(null,results[0]);
             }
         )
     },
