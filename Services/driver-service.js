@@ -72,6 +72,7 @@ module.exports = {
         )
     },
     driveractiveStatus:(data,callBack) => {
+        console.log(data);
         pool.query("UPDATE driver set active=? where driver_id = ?",
         [
             data.active,
