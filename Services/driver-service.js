@@ -63,7 +63,6 @@ module.exports = {
         console.log(data);
         pool.query("UPDATE driver set document_status=1 where driver_id = ?",[data.driver_id],
             (error,results,fields)=>{
-                console.log(results)
                 if(error){
                     callBack(error);
                 }
@@ -79,7 +78,6 @@ module.exports = {
             data.driver_id
         ],
             (error,results,fields)=>{
-                console.log(results)
                 if(error){
                     callBack(error);
                 }
@@ -173,6 +171,20 @@ module.exports = {
             }
         )
     },
+
+    driverRides:(data,callBack) => {
+        pool.query("SELECT * FROm orders where driver_id = ?",
+        [data.driver_id],
+            (error,results,fields)=>{
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
+    },
+
+
     favoriteDriver : (data,callBack) => {
         console.log(data);
         pool.query("SELECT * FROM driver where phone=?",
