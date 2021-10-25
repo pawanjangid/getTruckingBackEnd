@@ -52,7 +52,7 @@ module.exports = {
         [
             data.baseprice,
             data.parKmcost,
-            data.vehilce_id
+            data.vehicle_id
         ],
         (error,results,fields)=>{
             if(error){
