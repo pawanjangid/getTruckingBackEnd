@@ -42,7 +42,7 @@ router.get("/settings",settingsData);
 router.post("/settings",saveData);
 router.post("/editFare",editFare);
 router.post("/reason",AddReason);
-router.get("/editFare",listReason);
+router.get("/reason",listReason);
 router.post("/editReason",editreason);
 router.post("removeReason",removeReason);
 module.exports = router;
