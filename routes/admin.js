@@ -44,5 +44,5 @@ router.post("/editFare",editFare);
 router.post("/reason",AddReason);
 router.get("/reason",listReason);
 router.post("/editReason",editreason);
-router.post("removeReason",removeReason);
+router.post("/removeReason",removeReason);
 module.exports = router;
