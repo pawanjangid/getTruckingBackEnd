@@ -71,7 +71,21 @@ module.exports = {
             }
         )
     },
-
+    driveractiveStatus:(data,callBack) => {
+        pool.query("UPDATE driver set active=? where driver_id = ?",
+        [
+            data.active,
+            data.driver_id
+        ],
+            (error,results,fields)=>{
+                console.log(results)
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
+    },
     removeDriver: (data,callBack) => {
         
         pool.query("DELETE FROM driver where driver_id = ?",[data.driver_id],

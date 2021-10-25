@@ -1,4 +1,4 @@
-const { create, driverList, driverById,removeDriver, driverStatus,updateDriver, driverActive, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList } = require("../Services/driver-service");
+const { create, driverList, driverById,removeDriver, driverStatus,updateDriver, driverActive,driveractiveStatus, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -60,6 +60,23 @@ module.exports = {
     driverStatus: (req,res) => {
         const body = req.body;
         driverStatus(body,(err,results)=>{
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Driver list not found"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"Driver Document status updated",
+                data:results
+            });
+        });
+    },
+    driveractiveStatus: (req,res) => {
+        const body = req.body;
+        driveractiveStatus(body,(err,results)=>{
             if(err){
                 console.log(err);
                 return res.status(500).json({
