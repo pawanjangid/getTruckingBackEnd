@@ -46,6 +46,21 @@ module.exports = {
             return callBack(null,results);
         });
     },
+    editFare:(data,callBack)=>{
+        pool.query(
+        "update vehicles set baseprice=?,parKmcost=? where vehicle_id=?",
+        [
+            data.baseprice,
+            data.parKmcost,
+            data.vehilce_id
+        ],
+        (error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        });
+    },
     deleteVehicle : (data,callBack)=>{
         pool.query(
             "DELETE from vehicles where vehicle_id=?",

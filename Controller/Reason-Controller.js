@@ -1,8 +1,8 @@
-const { create, updateVehicle, deleteVehicle,listVehicle,editFare } = require("../Services/vehicle-service");
+const { AddReason,listReason,editreason,removeReason  } = require("../Services/Reason-service");
 module.exports = {
-    addVehicle : (req, res) => {
+    AddReason : (req, res) => {
         const body = req.body;
-        create(body,(err,result)=>{
+        AddReason(body,(err,result)=>{
             if (err){
                 console.log(err);
                return res.status(200),json({
@@ -18,45 +18,45 @@ module.exports = {
             
         });
     },
-    updateVehicle : (req, res) => {
+    editreason : (req, res) => {
         const body = req.body;
-        updateVehicle(body,(err,result)=>{
+        editreason(body,(err,result)=>{
             if (err){
                 console.log(err);
                return res.status(200),json({
                     success:0,
-                    message:"Unable to update vehicle",
+                    message:"Unable to update",
                 });
             }
             return res.status(200).json({
                 success:1,
-                message:"successfully vehicle updated",
+                message:"successfully reason updated",
                 data:result
             });
             
         });
     },
-    deleteVehicle : (req, res)=>{
+    removeReason : (req, res)=>{
         const body = req.body;
-        deleteVehicle(body,(err,result)=>{
+        removeReason(body,(err,result)=>{
             if (err){
                 console.log(err);
                 return res.status(200),json({
                     success:0,
-                    message:"Vehicle unable delete",
+                    message:"unable delete",
                 });
             }
             return res.status(200).json({
                 success:1,
-                message:"vehicle removed successfully",
+                message:"removed successfully",
                 data:result
             });
             
         });
     },
-    listVehicle:(req, res)=>{
+    listReason:(req, res)=>{
         const body = req.body;
-        listVehicle(body,(err,results)=>{
+        listReason(body,(err,results)=>{
             if (err){
                 console.log(err);
                 return res.status(200),json({
@@ -70,23 +70,5 @@ module.exports = {
                 data:results
             });
         })
-    },
-    editFare : (req, res) => {
-        const body = req.body;
-        editFare(body,(err,result)=>{
-            if (err){
-                console.log(err);
-               return res.status(200),json({
-                    success:0,
-                    message:"Unable to edit vehicle fare",
-                });
-            }
-            return res.status(200).json({
-                success:1,
-                message:"successfully vehicle updated",
-                data:result
-            });
-            
-        });
     },
 }

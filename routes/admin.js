@@ -1,13 +1,15 @@
 const { getUser } = require('../Controller/user-controller');
 const { getDriver,registration,removeDriver,driverById,driverStatus,driveractiveStatus,driverRides } = require('../Controller/driver-controller');
-const { addBatch, getBatch} = require('../Controller/batch-controller');
-const { listVehicle,addVehicle,deleteVehicle }  = require('../Controller/vehicle-controller');
+const { listVehicle,addVehicle,deleteVehicle,editFare }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner,deleteBanner } = require('../Controller/adsManage-controller');
 const { listCoupon, addCoupon } = require('../Controller/coupon-controller');
 const { headers,adminAdd,adminList,PayoutList,updateAdmin,removeAdmin } = require('../Controller/admin-controller');
 const { AllCountries,CountryStatus } = require('../Controller/Country-controller');
 const {listAllOrder } = require('../Controller/order-controller');
 const {settingsData,saveData} = require('../Controller/settings-controller');
+const {AddReason,listReason,editreason,removeReason} = require('../Controller/Reason-Controller');
+
+
 const router = require('express').Router();
 
 
@@ -21,8 +23,6 @@ router.post("/driverById", driverById);
 router.post("/driverStatus",driverStatus)
 router.post("/driveractiveStatus",driveractiveStatus);
 router.post("/driverRides",driverRides);
-router.get("/batch/:class_id", getBatch);
-router.post("/batch",addBatch);
 router.get("/vehicles",listVehicle);
 router.post("/vehicles",addVehicle);
 router.get("/banner",listBanner);
@@ -39,5 +39,10 @@ router.post("/removeVehicle",deleteVehicle);
 router.post("/countryStatus",CountryStatus);
 router.post("/deleteBanner",deleteBanner);
 router.get("/settings",settingsData);
-router.post("/settings",saveData)
+router.post("/settings",saveData);
+router.post("/editFare",editFare);
+router.post("/reason",AddReason);
+router.get("/editFare",listReason);
+router.post("/editReason",editreason);
+router.post("removeReason",removeReason);
 module.exports = router;
