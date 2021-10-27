@@ -32,7 +32,6 @@ module.exports = {
         )
     },
     userById: (data,callBack) => {
-        console.log(data)
         pool.query("SELECT * FROM users where user_id = ?",[data.user_id],
             (error,results,fields)=>{
                 if(error){

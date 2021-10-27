@@ -1,4 +1,4 @@
-const { getUser } = require('../Controller/user-controller');
+const { getUser,userById } = require('../Controller/user-controller');
 const { getDriver,registration,removeDriver,driverById,driverStatus,driveractiveStatus,driverRides } = require('../Controller/driver-controller');
 const { listVehicle,addVehicle,deleteVehicle,editFare }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner,deleteBanner } = require('../Controller/adsManage-controller');
@@ -18,6 +18,7 @@ router.get("/admin",adminList);
 router.post("/editAdmin",updateAdmin);
 router.post("/removeAdmin",removeAdmin);
 router.get("/users", getUser);
+router.post("/userById", userById);
 router.get("/drivers", getDriver);
 router.post("/driverById", driverById);
 router.post("/driverStatus",driverStatus)
