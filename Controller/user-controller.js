@@ -41,9 +41,9 @@ module.exports = {
     },
 
     editAmount : (req,res) => {
-        editAmount((err,results) => {
+        const body = req.body;
+        editAmount(body,(err,results) => {
             if(err){
-                console.log(err);
                 return res.status(500).json({
                     success:0,
                     message:"User Amount unable to update"
