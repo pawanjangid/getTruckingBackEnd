@@ -2,7 +2,7 @@ const { getUser,userById,editAmount } = require('../Controller/user-controller')
 const { getDriver,registration,removeDriver,driverById,driverStatus,driveractiveStatus,driverRides } = require('../Controller/driver-controller');
 const { listVehicle,addVehicle,deleteVehicle,editFare }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner,deleteBanner } = require('../Controller/adsManage-controller');
-const { listCoupon, addCoupon } = require('../Controller/coupon-controller');
+const { listCoupon, addCoupon,deleteCoupon } = require('../Controller/coupon-controller');
 const { headers,adminAdd,adminList,PayoutList,updateAdmin,removeAdmin } = require('../Controller/admin-controller');
 const { AllCountries,CountryStatus } = require('../Controller/Country-controller');
 const {listAllOrder } = require('../Controller/order-controller');
@@ -47,4 +47,7 @@ router.get("/reason",listReason);
 router.post("/editReason",editreason);
 router.post("/removeReason",removeReason);
 router.post("/editAmount",editAmount);
+router.post("/deleteCoupon",deleteCoupon);
+
+
 module.exports = router;
