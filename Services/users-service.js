@@ -53,6 +53,18 @@ module.exports = {
         )
     },
 
+    editAmount: (data,callBack) => {
+        pool.query("UPDATE users SET wallet_balance = ? WHERE user_id = ?", [data.amount,data.user_id],
+            (error,results,fields)=>{
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
+    },
+
+
     getUserByEmail: (data,callBack)=>{
         pool.query("SELECT * from users where phone = ?",
         [

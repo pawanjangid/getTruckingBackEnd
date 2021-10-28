@@ -1,4 +1,4 @@
-const { create, userList, userById, updateUser, getUserByEmail } = require("../Services/users-service");
+const { create, userList, userById, updateUser, getUserByEmail,editAmount } = require("../Services/users-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -33,7 +33,25 @@ module.exports = {
             }
             return res.status(200).json({
                 success:1,
-                message:"successful",
+                message:"Successful",
+                data:results
+            })
+        });
+
+    },
+
+    editAmount : (req,res) => {
+        editAmount((err,results) => {
+            if(err){
+                console.log(err);
+                return res.status(500).json({
+                    success:0,
+                    message:"User Amount unable to update"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"Amount Updated Successfully",
                 data:results
             })
         });
