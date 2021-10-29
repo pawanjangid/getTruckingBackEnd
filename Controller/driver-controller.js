@@ -21,7 +21,9 @@ module.exports = {
         });
     },
     updateDriver:(req,res) => {
+
         const body = req.body;
+        console.log(body);
         updateDriver(body,(err,results) => {
             if(err){
                 console.log(err);
