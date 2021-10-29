@@ -1,5 +1,5 @@
 const { getUser,userById,editAmount } = require('../Controller/user-controller');
-const { getDriver,registration,removeDriver,driverById,driverStatus,driveractiveStatus,driverRides } = require('../Controller/driver-controller');
+const { getDriver,registration,removeDriver,driverById,driverStatus,driveractiveStatus,driverRides,updateDriver } = require('../Controller/driver-controller');
 const { listVehicle,addVehicle,deleteVehicle,editFare }  = require('../Controller/vehicle-controller');
 const { listBanner, addBanner,deleteBanner } = require('../Controller/adsManage-controller');
 const { listCoupon, addCoupon,deleteCoupon } = require('../Controller/coupon-controller');
@@ -20,6 +20,7 @@ router.post("/removeAdmin",removeAdmin);
 router.get("/users", getUser);
 router.post("/userById", userById);
 router.get("/drivers", getDriver);
+router.post("/updateDriver",updateDriver);
 router.post("/driverById", driverById);
 router.post("/driverStatus",driverStatus)
 router.post("/driveractiveStatus",driveractiveStatus);
