@@ -37,6 +37,7 @@ module.exports = {
     },
 
     updateDriver: (data, callBack) => {
+        console.log(data);
         pool.query(
             "UPDATE driver set fullName=?, email=?, phone=?,createdAt=?,Identification=?,emergency_contact_person=?,emergency_contact_number=?,driving_license_expiry=?,vehicle_type=?,vehicle_modal=?,License_plate_number=?,ID_card_front=?,ID_card_back=?,photo=?,Proof_of_Residency=?,Driving_license=?,Vehicle_License=?,vehicle_body=?,insurance=? where driver_id = ?",
             [
