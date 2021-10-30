@@ -55,12 +55,26 @@ module.exports = {
     },
     updateAdmin : (data,callBack) => {
         
-        pool.query("UPDATE admin SET name = ?, email=?, password=?, phone=? WHERE admin_id = ?", 
+        pool.query("UPDATE admin SET name = ?, email=?, phone=? WHERE admin_id = ?", 
         [
             data.name,
             data.email,
-            data.password,
             data.phone,
+            data.admin_id,
+        ],
+            (error,results,fields)=>{
+                if(error){
+                    callBack(error);
+                }
+                return callBack(null,results);
+            }
+        )
+    },
+
+    changeAdminPassword: (data,callBack) => {
+        pool.query("UPDATE admin SET password=? WHERE admin_id = ?", 
+        [
+            data.password,
             data.admin_id,
         ],
             (error,results,fields)=>{
