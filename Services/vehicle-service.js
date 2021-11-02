@@ -41,7 +41,7 @@ module.exports = {
             data.dimension,
             data.image,
             Math.floor(Date.now() /1000),
-            data.vehilce_id
+            data.vehicle_id
         ],
         (error,results,fields)=>{
             if(error){
