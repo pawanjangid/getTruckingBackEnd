@@ -22,7 +22,6 @@ module.exports = {
         const body = req.body;
         updateVehicle(body,(err,result)=>{
             if (err){
-                console.log(err);
                return res.status(200),json({
                     success:0,
                     message:"Unable to update vehicle",
