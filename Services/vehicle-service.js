@@ -34,9 +34,13 @@ module.exports = {
 
     updateVehicle: (data,callBack)=>{
         pool.query(
-        "update vehicles set vehicle_name=? where vehicle_id=?",
+        "update vehicles set vehicle_name=?,description=?,dimension=?,image=?,time=? where vehicle_id=?",
         [
             data.vehicle_name,
+            data.description,
+            data.dimension,
+            data.image,
+            Math.floor(Date.now() /1000),
             data.vehilce_id
         ],
         (error,results,fields)=>{
