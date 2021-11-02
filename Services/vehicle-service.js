@@ -33,6 +33,16 @@ module.exports = {
     },
 
     updateVehicle: (data,callBack)=>{
+
+
+        var base64Str = data.image;
+        var path ='./public/vehicle/';
+        const imageName = Date.now() + '.png';
+        var optionalObj = {'fileName': imageName, 'type':'png'};
+        var imageInfo = base64ToImage(base64Str,path,optionalObj); 
+        data.image =  '/vehicle/' + imageInfo.fileName;
+
+
         pool.query(
         "update vehicles set vehicle_name=?,description=?,dimension=?,image=?,time=? where vehicle_id=?",
         [
