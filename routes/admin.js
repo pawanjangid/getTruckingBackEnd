@@ -7,6 +7,7 @@ const { headers,adminAdd,adminList,PayoutList,updateAdmin,removeAdmin,changeAdmi
 const { AllCountries,CountryStatus } = require('../Controller/Country-controller');
 const {listAllOrder } = require('../Controller/order-controller');
 const {settingsData,saveData} = require('../Controller/settings-controller');
+const {listService} = require('../Controller/additionalService-controller');
 const {AddReason,listReason,editreason,removeReason} = require('../Controller/Reason-Controller');
 
 
@@ -51,5 +52,5 @@ router.post("/removeReason",removeReason);
 router.post("/editAmount",editAmount);
 router.post("/deleteCoupon",deleteCoupon);
 router.post("/changeAdminPassword",changeAdminPassword)
-
+router.post("/listService",listService);
 module.exports = router;
