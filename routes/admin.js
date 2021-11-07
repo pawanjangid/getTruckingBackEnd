@@ -7,7 +7,7 @@ const { headers,adminAdd,adminList,PayoutList,updateAdmin,removeAdmin,changeAdmi
 const { AllCountries,CountryStatus } = require('../Controller/Country-controller');
 const {listAllOrder } = require('../Controller/order-controller');
 const {settingsData,saveData} = require('../Controller/settings-controller');
-const {listService,addService} = require('../Controller/additionalService-controller');
+const {listService,addService,deleteService} = require('../Controller/additionalService-controller');
 const {AddReason,listReason,editreason,removeReason} = require('../Controller/Reason-Controller');
 
 
