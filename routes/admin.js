@@ -54,4 +54,7 @@ router.post("/deleteCoupon",deleteCoupon);
 router.post("/changeAdminPassword",changeAdminPassword)
 router.post("/listService",listService);
 router.post("/addService",addService);
+router.post("/deleteService",deleteService);
+
+
 module.exports = router;
