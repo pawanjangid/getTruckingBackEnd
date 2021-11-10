@@ -1,6 +1,6 @@
 const { registration,updateDriver,login,driverActive,driverLocation,getOrderByLocation,grabOrder } = require('../Controller/driver-controller');
 const { getCountries } = require('../Controller/Country-controller');
-const { listOrder,createOrder } = require('../Controller/order-controller');
+const { listOrder,createOrder,listDriverOrder } = require('../Controller/order-controller');
 const {addBank,listBank} = require('../Controller/bank-controller');
 
 const router = require('express').Router();
@@ -11,7 +11,7 @@ router.post("/", registration);
 router.get("/countries", getCountries);
 router.get("/topups",checkToken,topupList);
 router.post("/order",checkToken, createOrder);
-router.get("/order",checkToken, listOrder);
+router.get("/order",checkToken, listDriverOrder);
 router.patch("/", checkToken, updateDriver);
 router.post("/login",login);
 router.post('/upload', fileUpload);
