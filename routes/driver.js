@@ -7,8 +7,6 @@ const router = require('express').Router();
 const { checkToken } = require('../auth/token-driver-validation');
 const { topupList } = require('../Controller/topup-controller');
 const { fileUpload } = require('../Controller/file-controller');
-
-
 router.post("/", registration);
 router.get("/countries", getCountries);
 router.get("/topups",checkToken,topupList);
