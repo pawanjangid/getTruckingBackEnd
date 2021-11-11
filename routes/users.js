@@ -10,7 +10,8 @@ const { applyCoupon } = require('../Controller/coupon-controller');
 
 
 router.post("/", registration)
-router.get("/countries", getCountries)
+router.get("/countries", getCountries);
+router.get("/",checkToken,userById);
 router.get("/topups",checkToken,topupList),
 router.post("/services",checkToken, listService)
 router.post("/order",checkToken, createOrder)
