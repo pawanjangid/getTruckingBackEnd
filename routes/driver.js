@@ -1,4 +1,4 @@
-const { registration,updateDriver,login,driverActive,driverLocation,getOrderByLocation,grabOrder } = require('../Controller/driver-controller');
+const { registration,updateDriver,login,driverActive,driverLocation,getOrderByLocation,grabOrder,driverById } = require('../Controller/driver-controller');
 const { getCountries } = require('../Controller/Country-controller');
 const { listOrder,createOrder,listDriverOrder } = require('../Controller/order-controller');
 const {addBank,listBank} = require('../Controller/bank-controller');
@@ -8,6 +8,7 @@ const { checkToken } = require('../auth/token-driver-validation');
 const { topupList } = require('../Controller/topup-controller');
 const { fileUpload } = require('../Controller/file-controller');
 router.post("/", registration);
+router.get("/", driverById);
 router.get("/countries", getCountries);
 router.get("/topups",checkToken,topupList);
 router.post("/order",checkToken, createOrder);
