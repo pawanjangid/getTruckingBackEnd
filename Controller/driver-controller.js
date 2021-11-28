@@ -1,4 +1,4 @@
-const { create, driverList, driverById,driverRides,removeDriver,EditDriver, driverStatus,updateDriver, driverActive,driveractiveStatus, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList } = require("../Services/driver-service");
+const { create, driverList, driverById,driverRides,removeDriver, driverStatus,updateDriver, driverActive,driveractiveStatus, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
