@@ -85,7 +85,7 @@ module.exports = {
                 console.log(err);
                 return res.status(500).json({
                     success:0,
-                    message:"user list not found"
+                    message:"Sorry we are unable to update"
                 });
             }
             return res.status(200).json({
