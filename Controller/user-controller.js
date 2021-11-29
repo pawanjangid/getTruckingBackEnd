@@ -82,10 +82,10 @@ module.exports = {
         console.log(body);
         updateUser(body,(err,result)=>{
             if(err){
-                console.log(err);
+                console.log("Error :",err);
                 return res.status(500).json({
                     success:0,
-                    message:"Sorry we are unable to update"
+                    message:"Sorry!! we are unable to update"
                 });
             }
             return res.status(200).json({

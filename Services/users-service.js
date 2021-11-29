@@ -44,7 +44,7 @@ module.exports = {
 
     updateUser : (data,callBack) => {
         console.log("User data :",data)
-        pool.query("UPDATE users SET firstName = ?, lastName=?,email=?,phone=?,photoURL=? WHERE user_id = ?", [data.firstName,data.lastName,data.email,data.phone.data.photoURL,data.user_id],
+        pool.query("UPDATE users SET firstName = ?, lastName = ?, email = ?, phone = ?, photoURL = ? WHERE user_id = ?", [data.firstName,data.lastName,data.email,data.phone,data.photoURL,data.user_id],
             (error,results,fields)=>{
                 if(error){
                     console.log(error);
