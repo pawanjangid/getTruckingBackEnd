@@ -79,6 +79,7 @@ module.exports = {
     },
     updateUser: (req,res)=>{
         const body = req.body;
+        console.log(body);
         updateUser(body,(err,result)=>{
             if(err){
                 console.log(err);
