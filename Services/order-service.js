@@ -94,5 +94,15 @@ module.exports = {
             }
             return callBack(null,results[0]);
         })
+    },
+    completeOrder:(data,callBack)=>{
+        pool.query("UPDATE orders set status='completed' WHERE order_id=?",[
+            data.order_id
+        ],(error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        })
     }
 }

@@ -1,4 +1,4 @@
-const { create,listOrder,listAllOrder,orderById,listDriverOrder } = require("../Services/order-service");
+const { create,listOrder,listAllOrder,orderById,listDriverOrder,completeOrder } = require("../Services/order-service");
 
 module.exports = {
     createOrder : (req,res)=>{
@@ -84,5 +84,24 @@ module.exports = {
                 data:results
             });
         })
-    }
+    },
+    completeOrder: (req,res)=>{
+        const body = req.body;
+        console.log(body);
+        completeOrder(body,(err,result)=>{
+            if(err){
+                console.log("Error :",err);
+                return res.status(500).json({
+                    success:0,
+                    message:"Sorry!! we are unable to update"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"User data updated",
+                data:result
+            });
+        });
+
+    },
 }
