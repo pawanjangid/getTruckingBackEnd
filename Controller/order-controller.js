@@ -102,6 +102,5 @@ module.exports = {
                 data:result
             });
         });
-
-    },
+    }
 }
