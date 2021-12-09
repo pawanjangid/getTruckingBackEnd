@@ -13,7 +13,7 @@ router.get("/countries", getCountries);
 router.get("/topups",checkToken,topupList);
 router.post("/order",checkToken, createOrder);
 router.get("/order",checkToken, listDriverOrder);
-router.get("/completeOrder",checkToken, completeOrder);
+router.post("/completeOrder",checkToken, completeOrder);
 router.patch("/", checkToken, updateDriver);
 router.post("/login",login);
 router.post('/upload', fileUpload);
