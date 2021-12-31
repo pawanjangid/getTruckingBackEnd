@@ -96,7 +96,6 @@ module.exports = {
         })
     },
     completeOrder:(data,callBack)=>{
-        console.log("Order complete");
         console.log(data);
         pool.query("UPDATE `orders` SET status = 'completed' WHERE order_id = ?",[
             data.order_id
