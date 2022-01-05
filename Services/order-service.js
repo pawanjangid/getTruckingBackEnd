@@ -105,5 +105,16 @@ module.exports = {
             }
             return callBack(null,results);
         })
+    },
+    cancelOrder:(data,callBack)=>{
+        console.log(data);
+        pool.query("UPDATE `orders` SET status = 'on_going',driver_id=0 WHERE order_id = ?",[
+            data.order_id
+        ],(error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        })
     }
 }
