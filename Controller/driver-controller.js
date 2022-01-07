@@ -1,4 +1,4 @@
-const { create, driverList, driverById,driverRides,removeDriver, driverStatus,updateDriver, driverActive,driveractiveStatus, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList } = require("../Services/driver-service");
+const { create, driverList, driverById,driverRides,removeDriver, driverStatus,updateDriver, driverActive,driveractiveStatus, getDriverByEmail,driverLocation,getOrderByLocation,grabOrder,favoriteDriver,favoriteDriverList,deleteFavorite } = require("../Services/driver-service");
 const { genSaltSync,hashSync, compareSync } = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 module.exports = {
@@ -69,6 +69,22 @@ module.exports = {
             return res.status(200).json({
                 success:1,
                 message:"Driver data here",
+                data:results[0]
+            });
+        });
+    },
+    deleteFavorite: (req,res) => {
+        const body = req.body;
+        deleteFavorite(body,(err,results)=>{
+            if(err){
+                return res.status(500).json({
+                    success:0,
+                    message:"Driver not found"
+                });
+            }
+            return res.status(200).json({
+                success:1,
+                message:"Driver Deleted Successfully",
                 data:results[0]
             });
         });

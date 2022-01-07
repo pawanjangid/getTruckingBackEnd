@@ -245,5 +245,18 @@ module.exports = {
             }
             return callBack(null,results);
         })
+    },
+    deleteFavorite: (data,callBack)=>{
+        pool.query("DELETE FROM favorite_driver driver_id=? AND user_id=?",
+        [
+            data.driver_id,
+            data.user_id
+        ],
+        (error,results,fields)=>{
+            if(error){
+                callBack(error);
+            }
+            return callBack(null,results);
+        })
     }
 };

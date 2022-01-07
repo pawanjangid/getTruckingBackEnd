@@ -5,7 +5,7 @@ const { listOrder,createOrder,orderById } = require('../Controller/order-control
 const router = require('express').Router();
 const { checkToken } = require('../auth/token-validation');
 const { topupList } = require('../Controller/topup-controller');
-const {favoriteDriver,favoriteDriverList,driverById} = require('../Controller/driver-controller');
+const {favoriteDriver,favoriteDriverList,driverById,deleteFavorite} = require('../Controller/driver-controller');
 const { applyCoupon } = require('../Controller/coupon-controller');
 
 
@@ -20,6 +20,7 @@ router.patch("/", checkToken, updateUser)
 router.post("/login",login);
 router.post("/favoriteDriver",checkToken,favoriteDriver);
 router.get("/favoriteDriver",checkToken,favoriteDriverList);
+router.post("/deleteFavorite",checkToken,deleteFavorite);
 router.post("/applyCoupon",checkToken,applyCoupon);
 router.post("/orderById",checkToken,orderById);
 router.post("/driverDetail",checkToken,driverById)
