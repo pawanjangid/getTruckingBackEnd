@@ -85,7 +85,7 @@ module.exports = {
             return res.status(200).json({
                 success:1,
                 message:"Driver Deleted Successfully",
-                data:results[0]
+                data:results
             });
         });
     },
