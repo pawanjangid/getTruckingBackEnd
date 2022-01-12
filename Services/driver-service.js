@@ -154,7 +154,7 @@ module.exports = {
         )
     },
     getOrderByLocation:(data,callBack) => {
-        pool.query("SELECT *, ( 3959 * acos(cos(radians(?)) * cos(radians(`pickLatitude`)) * cos(radians(`pickLongitude`) - radians(?)) + sin(radians(?)) * sin(radians(`pickLatitude`))) ) AS distanceBetween FROM orders WHERE `status`='on_going' ORDER BY distanceBetween LIMIT 0, 20",
+        pool.query("SELECT *, ( 3959 * acos(cos(radians(?)) * cos(radians(`pickLatitude`)) * cos(radians(`pickLongitude`) - radians(?)) + sin(radians(?)) * sin(radians(`pickLatitude`))) ) AS distanceBetween FROM orders INNER JOIN `users` ON `orders`.user_id=`users`.user_id INNER JOIN `vehicles` ON `orders`.vehicle_id=`vehicles`.vehicle_id WHERE `orders`.`status`='on_going' ORDER BY distanceBetween LIMIT 0, 20",
         [
             data.latitude,
             data.longitude,
