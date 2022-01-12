@@ -4,7 +4,7 @@ const pool = require('../config/database');
 module.exports = {
     create: (data,callBack)=>{
         pool.query(
-            "insert into orders(vehicle_id,preferred_driver,user_id,amount,locations,asap,pickLatitude,pickLongitude,duration,distance,time) values(?,?,?,?,?,?,?,?,?,?,?)",
+            "insert into orders(vehicle_id,preferred_driver,user_id,amount,locations,asap,pickLatitude,pickLongitude,duration,distance,notes_to_driver,time) values(?,?,?,?,?,?,?,?,?,?,?,?)",
             [
                 data.vehicle_id,
                 data.preferred_driver,
@@ -16,6 +16,7 @@ module.exports = {
                 data.pickLongitude,
                 data.duration,
                 data.distance,
+                data.note_to_driver,
                 Math.floor(Date.now() /1000)],
             (error,results,fields)=>{
             if(error){
